@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Employees.Domain.Entities
+using Employees.Domain.Entities;
 
 namespace Employees.Infrastructure.Persistence;
 
-internal class EmployeesDbContext : DbContext
+internal class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options : DbContext(options)
 {
     internal DbSet<Employee> Employees { get; set; } 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-        optionsBuilder.UseNpgsql("Host = localhost; Port = 5432; Database = EmploeesDb; Username = user; Password = password");
+        optionsBuilder.UseNpgsql();
         }
 }
