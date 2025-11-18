@@ -1,4 +1,5 @@
 using Employees.Infrastructure.Extensions;
+using Employees.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,13 @@ builder.Services.AddOpenApi();
 
 builder.Configuration.GetConnectionString("EmployeesDb");
 
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<IEmployeeSeeder>();
+await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
