@@ -1,4 +1,5 @@
 ﻿using Employees.Infrastructure.Persistence;
+using Employees.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,8 @@ namespace Employees.Infrastructure.Extensions
         {
             var connectionsString = configuration.GetConnectionString("EmployeesDb");
             services.AddDbContext<EmployeesDbContext>(options => options.UseNpgsql(connectionsString));
-          
+
+            services.AddScoped<IEmployeeSeeder, EmployeeSeeder>();        
         }
     }
 }
