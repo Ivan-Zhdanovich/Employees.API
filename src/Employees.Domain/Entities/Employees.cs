@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using Employees.Domain.Enums;
+﻿using Employees.Domain.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace Employees.Domain.Entities
 {
-    public class Employee
+    public class Employee : IdentityUser
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required string Email { get; set; }
@@ -18,5 +13,14 @@ namespace Employees.Domain.Entities
         public required EmployeeRole Role { get; set; }
         public bool IsActive { get; set; }
 
+        public Employee(string firstName, string lastName, string email, string password, EmployeeRole role, bool isActive)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            Role = role;
+            IsActive = isActive;
+        }
     }
 }
