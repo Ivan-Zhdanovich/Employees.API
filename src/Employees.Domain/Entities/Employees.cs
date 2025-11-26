@@ -1,5 +1,6 @@
 ﻿using Employees.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Employees.Domain.Entities
 {
@@ -12,6 +13,9 @@ namespace Employees.Domain.Entities
         public required string Password { get; set; }
         public required EmployeeRole Role { get; set; }
         public bool IsActive { get; set; }
+
+        [SetsRequiredMembers]
+        public Employee() : base() {}
 
         public Employee(string firstName, string lastName, string email, string password, EmployeeRole role, bool isActive)
         {
