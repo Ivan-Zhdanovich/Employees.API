@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Employees.Infrastructure.Persistence;
 
-internal class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : IdentityDbContext<Employee>(options)
+public class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : IdentityDbContext<Employee>(options)
 {
-    internal DbSet<Employee> Employees { get; set; } 
+    public DbSet<Employee> Employee { get; set; } 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         optionsBuilder.UseNpgsql();

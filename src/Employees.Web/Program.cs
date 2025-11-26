@@ -1,3 +1,4 @@
+using Employees.Domain.Entities;
 using Employees.Infrastructure.Extensions;
 using Employees.Infrastructure.Seeders;
 
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<Employee>();
 
 app.UseAuthentication();
 app.UseAuthorization();

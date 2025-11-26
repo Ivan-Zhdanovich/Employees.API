@@ -17,7 +17,8 @@ namespace Employees.Infrastructure.Extensions
 
             services.AddIdentityApiEndpoints<Employee>().AddEntityFrameworkStores<EmployeesDbContext>();
 
-            services.AddScoped<IEmployeeSeeder, EmployeeSeeder>();        
+            services.AddScoped<IEmployeeSeeder, EmployeeSeeder>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
     }
 }
