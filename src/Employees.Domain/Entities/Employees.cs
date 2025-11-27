@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Employees.Domain.Entities
 {
-    public class Employee : IdentityUser
+    public class Employee
     {
         public int Id { get; set; }
         public required string FirstName { get; set; }

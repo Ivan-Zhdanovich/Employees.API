@@ -15,10 +15,10 @@ namespace Employees.Infrastructure.Extensions
             services.AddDbContext<EmployeesDbContext>(options => 
             options.UseNpgsql(connectionsString).EnableSensitiveDataLogging());
 
-            services.AddIdentityApiEndpoints<Employee>().AddEntityFrameworkStores<EmployeesDbContext>();
+            services.AddIdentityApiEndpoints<ApplicationUser>().AddEntityFrameworkStores<EmployeesDbContext>();
 
             services.AddScoped<IEmployeeSeeder, EmployeeSeeder>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            //services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
     }
 }
