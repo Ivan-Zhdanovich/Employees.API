@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Employees.Infrastructure.Persistence;
 
-public class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : IdentityDbContext<Employee>(options)
+public class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<Employee> Employee { get; set; } 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

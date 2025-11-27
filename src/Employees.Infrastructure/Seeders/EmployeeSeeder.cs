@@ -11,10 +11,10 @@ namespace Employees.Infrastructure.Seeders
         {
             if (await dbContext.Database.CanConnectAsync())
             {
-                if (dbContext.Employees.Any())
+                if (dbContext.Employee.Any())
                 {
                     var employees = GetEmployees();
-                    dbContext.Employees.AddRange(employees);
+                    dbContext.Employee.AddRange(employees);
                     await dbContext.SaveChangesAsync();
                 }
             }
