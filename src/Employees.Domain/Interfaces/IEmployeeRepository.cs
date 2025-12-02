@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Employees.Domain.Interfaces
 {
-    internal interface IEmployeeRepository
+    public interface IEmployeeRepository
     {
         Task<IEnumerable<Employee>> GetAllAsync();
-        Task<Employee> GetByIdAsync();
-        Task AddAsync();
-        Task UpdateAsync();
-        Task DeleteAsync();
+        Task<Employee> GetByIdAsync(int id);
+        //Task AddAsync();
+        //Task UpdateAsync();
+        //Task DeleteAsync();
     }
 }

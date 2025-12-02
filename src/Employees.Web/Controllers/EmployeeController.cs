@@ -16,6 +16,26 @@ namespace Employees.Web.Controllers
         {
             return await _employeesDbContext.Employee.ToListAsync();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<Employee>> GetEmployeeById(int id)
+        {
+            var employee = await _employeesDbContext.Employee.FindAsync(id);
+            if(employee is null)
+            {
+                return NotFound();
+;            }
+            return employee;
+        }
+
+        [HttpPost]
+
+        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee) 
+        {
+            _employeesDbContext.Employee.Add(employee);
+            await _employeesDbContext.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id });
+        }
   
     }
 }

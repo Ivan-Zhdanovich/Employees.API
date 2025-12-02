@@ -14,7 +14,7 @@ namespace Employees.Domain.Entities
         public required string Password { get; set; }
         public required EmployeeRole Role { get; set; }
         public bool IsActive { get; set; }
-        public string ApplicationUserId { get; set; }
+        public int ApplicationUserId { get; set; }
        
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
