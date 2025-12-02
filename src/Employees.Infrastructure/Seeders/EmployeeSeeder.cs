@@ -1,7 +1,6 @@
 ﻿using Employees.Domain.Entities;
 using Employees.Domain.Enums;
 using Employees.Infrastructure.Persistence;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Employees.Infrastructure.Seeders
 {
