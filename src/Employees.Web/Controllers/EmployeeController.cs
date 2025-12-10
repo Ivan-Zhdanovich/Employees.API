@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Employees.Web.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EmployeeController(EmployeesDbContext employeesDbContext): ControllerBase
     {
         private readonly EmployeesDbContext _employeesDbContext = employeesDbContext;

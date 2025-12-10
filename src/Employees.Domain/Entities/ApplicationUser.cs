@@ -9,8 +9,6 @@ namespace Employees.Domain.Entities
     {
         public int EmployeeId { get; set; }
         public required bool IsActive { get; set; } = true;
-
-        [ForeignKey("EmployeeId")]
         public required Employee Employee { get; set; }
     }
 }

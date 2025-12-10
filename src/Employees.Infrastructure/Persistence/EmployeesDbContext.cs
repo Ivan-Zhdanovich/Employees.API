@@ -12,4 +12,13 @@ public class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : 
         {
         optionsBuilder.UseNpgsql();
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Employee>()
+            .HasOne(e => e.ApplicationUser)
+            .WithOne(au => au.Employee)
+            .HasForeignKey<Employee>(e => e.ApplicationUserId);
+    }
 }
