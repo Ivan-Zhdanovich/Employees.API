@@ -8,7 +8,7 @@ namespace Employees.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController(EmployeesDbContext employeesDbContext): ControllerBase
+    public class EmployeesController(EmployeesDbContext employeesDbContext): ControllerBase
     {
         private readonly EmployeesDbContext _employeesDbContext = employeesDbContext;
 
@@ -19,7 +19,7 @@ namespace Employees.Web.Controllers
             return await _employeesDbContext.Employee.ToListAsync();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployeeById(int id)
         {
             var employee = await _employeesDbContext.Employee.FindAsync(id);
