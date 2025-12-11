@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapIdentityApi<ApplicationUser>();
+app.MapIdentityApi<Employee>();
 
 app.UseAuthentication();
 app.UseAuthorization();

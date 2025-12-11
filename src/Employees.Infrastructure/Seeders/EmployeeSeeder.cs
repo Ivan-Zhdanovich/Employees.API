@@ -1,6 +1,7 @@
 ﻿using Employees.Domain.Entities;
 using Employees.Domain.Enums;
 using Employees.Infrastructure.Persistence;
+using System.ComponentModel.DataAnnotations;
 
 namespace Employees.Infrastructure.Seeders
 {
@@ -10,7 +11,7 @@ namespace Employees.Infrastructure.Seeders
         {
             if (await dbContext.Database.CanConnectAsync())
             {
-                if (dbContext.Employee.Any())
+                if (!dbContext.Employee.Any())
                 {
                     var employees = GetEmployees();
                     dbContext.Employee.AddRange(employees);
@@ -31,11 +32,8 @@ namespace Employees.Infrastructure.Seeders
 
             Email = "Ivankoff@mail.ru",
 
-            Password = "1234567",
-
             Role = EmployeeRole.Admin,
 
-            IsActive = true,
             },
 
            new Employee()
@@ -46,11 +44,10 @@ namespace Employees.Infrastructure.Seeders
 
                Email = "Smirnoff@mail.ru",
 
-               Password = "1234567",
+               PasswordHash = "1234567#!",
 
                Role = EmployeeRole.User,
 
-               IsActive = true,
            },
 
           ];
