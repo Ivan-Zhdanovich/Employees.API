@@ -3,6 +3,7 @@ using Employees.Domain.Entities;
 using Employees.Infrastructure.Persistence;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Employees.Web.Dtos;
 
 namespace Employees.Web.Controllers
 {
@@ -16,7 +17,17 @@ namespace Employees.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _employeesDbContext.Employee.ToListAsync();
+           var employeesDtoList =  await _employeesDbContext.Employee.Select( e => new EmployeeProfileDto
+           {
+               Id = e.Id,
+               //UserName = e.UserName,
+               //Email = e.Email,
+               FirstName = e.FirstName,
+               LastName = e.LastName,
+               Role = (int)e.Role,
+               IsActive = e.IsActive,
+           }).ToListAsync();
+            return Ok(employeesDtoList);
         }
 
         [HttpGet("{id}")]

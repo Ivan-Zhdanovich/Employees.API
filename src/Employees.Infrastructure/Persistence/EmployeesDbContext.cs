@@ -15,5 +15,13 @@ public class EmployeesDbContext(DbContextOptions<EmployeesDbContext> options) : 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Employee>().Ignore(u => u.PhoneNumber);
+        modelBuilder.Entity<Employee>().Ignore(u => u.PhoneNumberConfirmed);
+        modelBuilder.Entity<Employee>().Ignore(u => u.TwoFactorEnabled);
+        modelBuilder.Entity<Employee>().Ignore(u => u.LockoutEnabled);
+        modelBuilder.Entity<Employee>().Ignore(u => u.LockoutEnd);
+        modelBuilder.Entity<Employee>().Ignore(u => u.AccessFailedCount);
+        modelBuilder.Entity<Employee>().Ignore(u => u.SecurityStamp);
+        modelBuilder.Entity<Employee>().Ignore(u => u.ConcurrencyStamp);
     }
 }
